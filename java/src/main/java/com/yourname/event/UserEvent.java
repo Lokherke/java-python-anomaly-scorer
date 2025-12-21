@@ -47,8 +47,29 @@ public class UserEvent {
 
     // Example usage
     public static void main(String[] args) {
-        UserEvent us = new UserEvent(12345, "login", 1627849923L, "127.0.0.1");
-        System.out.println(us.toJson());
-        System.out.println(us); // This will call toString() automatically
-    }
+    // Create a few UserEvent objects
+    UserEvent loginEvent = new UserEvent(12345, "login", 1627849923L, "127.0.0.1");
+    UserEvent logoutEvent = new UserEvent(67890, "logout", 1627853523L, "192.168.1.1");
+    UserEvent purchaseEvent = new UserEvent(54321, "purchase", 1627857123L, "10.0.0.1");
+
+    // Print all events using toString() (for debugging)
+    System.out.println("=== Debugging Output (toString()) ===");
+    System.out.println(loginEvent);
+    System.out.println(logoutEvent);
+    System.out.println(purchaseEvent);
+
+    // Print all events using toJson() (for data exchange)
+    System.out.println("\n=== JSON Output (toJson()) ===");
+    System.out.println(loginEvent.toJson());
+    System.out.println(logoutEvent.toJson());
+    System.out.println(purchaseEvent.toJson());
+
+    // Example: Modify an event using setters
+    loginEvent.setEventType("failed_login");
+    loginEvent.setTimestamp(1627850000L);
+    System.out.println("\n=== After Modification ===");
+    System.out.println(loginEvent);
+    System.out.println(loginEvent.toJson());
+}
+
 }
